@@ -1,0 +1,10 @@
+{
+    "namespace": "cashpaymentservice",
+    "type": "record",
+    "name": "PaymentData",
+    "fields": [
+        {
+            "name": "payment", "type": "string"
+        }
+    ]
+}
