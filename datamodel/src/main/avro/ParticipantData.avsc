@@ -1,0 +1,13 @@
+{
+    "namespace": "cashpaymentservice.datamodel",
+    "type": "record",
+    "name": "ParticipantData",
+    "fields": [
+        {
+            "name": "nameId", "type": "string"
+        },
+        {
+            "name": "balance", "type": "int"
+        }
+    ]
+}

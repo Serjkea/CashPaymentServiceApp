@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="datamodel [file:/C:/Development/ScalaLearn/CashPaymentServiceApp/]" external.linked.project.path="$MODULE_DIR$/../../datamodel" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
+    <output url="file://$MODULE_DIR$/../../datamodel/target/scala-2.12/classes" />
+    <output-test url="file://$MODULE_DIR$/../../datamodel/target/scala-2.12/test-classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../datamodel">
+      <sourceFolder url="file://$MODULE_DIR$/../../datamodel/target/protobuf_external_src" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../datamodel/target/scala-2.12" isTestSource="false" generated="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../../datamodel/target/avro" />
+      <excludeFolder url="file://$MODULE_DIR$/../../datamodel/target/protobuf_external" />
+      <excludeFolder url="file://$MODULE_DIR$/../../datamodel/target/protobuf_external_src" />
+      <excludeFolder url="file://$MODULE_DIR$/../../datamodel/target/streams" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="sbt: com.google.android:annotations:4.1.1.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.xerial.snappy:snappy-java:1.1.1.3:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:macro-compat_2.12:1.1.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.tukaani:xz:1.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.slf4j:slf4j-api:1.7.7:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-parser-combinators_2.12:1.1.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-java8-compat_2.12:0.8.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-collection-compat_2.12:2.1.6:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.12.11:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.reactivestreams:reactive-streams:1.0.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.codehaus.mojo:animal-sniffer-annotations:1.18:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.codehaus.jackson:jackson-mapper-asl:1.9.13:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.codehaus.jackson:jackson-core-asl:1.9.13:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.checkerframework:checker-compat-qual:2.5.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.commons:commons-compress:1.8.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.avro:avro:1.8.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.spray:spray-json_2.12:1.3.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.perfmark:perfmark-api:0.19.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.grpc:grpc-stub:1.30.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.grpc:grpc-netty-shaded:1.30.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.grpc:grpc-core:1.30.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.grpc:grpc-context:1.30.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.grpc:grpc-api:1.30.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe.akka:akka-stream_2.12:2.5.31:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe.akka:akka-protobuf_2.12:2.5.31:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe.akka:akka-parsing_2.12:10.1.12:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe.akka:akka-http_2.12:10.1.12:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe.akka:akka-http2-support_2.12:10.1.12:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe.akka:akka-http-core_2.12:10.1.12:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe.akka:akka-discovery_2.12:2.5.31:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe.akka:akka-actor_2.12:2.5.31:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe:ssl-config-core_2.12:0.3.8:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe:config:1.3.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.twitter:hpack:1.0.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.twitter:bijection-core_2.12:0.9.7:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.twitter:bijection-avro_2.12:0.9.7:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.thoughtworks.paranamer:paranamer:2.7:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.thesamet.scalapb:scalapb-runtime_2.12:0.10.7:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.thesamet.scalapb:lenses_2.12:0.10.7:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.lihaoyi:sourcecode_2.12:0.2.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.lihaoyi:geny_2.12:0.6.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.lihaoyi:fastparse_2.12:2.3.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.lightbend.cloudflow:cloudflow-streamlets_2.12:2.0.10:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.lightbend.akka.grpc:akka-grpc-runtime_2.12:1.0.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.iheart:ficus_2.12:1.4.7:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.google.protobuf:protobuf-java:3.11.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.google.j2objc:j2objc-annotations:1.3:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.google.guava:guava:28.2-android:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.google.guava:failureaccess:1.0.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.google.errorprone:error_prone_annotations:2.3.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.google.code.gson:gson:2.8.6:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.google.code.findbugs:jsr305:3.0.2:jar" level="project" />
+  </component>
+</module>

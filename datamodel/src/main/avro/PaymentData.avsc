@@ -1,0 +1,10 @@
+{
+    "namespace": "cashpaymentservice.datamodel",
+    "type": "record",
+    "name": "PaymentData",
+    "fields": [
+        {
+            "name": "payment", "type": "string"
+        }
+    ]
+}

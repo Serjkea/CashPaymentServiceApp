@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cash-payment-service-scala.iml" filepath="$PROJECT_DIR$/.idea/modules/cash-payment-service-scala.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cash-payment-service-scala-build.iml" filepath="$PROJECT_DIR$/.idea/modules/cash-payment-service-scala-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cashpaymentservice.iml" filepath="$PROJECT_DIR$/.idea/modules/cashpaymentservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/datamodel.iml" filepath="$PROJECT_DIR$/.idea/modules/datamodel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/file-payments-ingress.iml" filepath="$PROJECT_DIR$/.idea/modules/file-payments-ingress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/participant-initialize-ingress.iml" filepath="$PROJECT_DIR$/.idea/modules/participant-initialize-ingress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment-checking-streamlet.iml" filepath="$PROJECT_DIR$/.idea/modules/payment-checking-streamlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment-logging-egress.iml" filepath="$PROJECT_DIR$/.idea/modules/payment-logging-egress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment-processing-streamlet.iml" filepath="$PROJECT_DIR$/.idea/modules/payment-processing-streamlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/root.iml" filepath="$PROJECT_DIR$/.idea/modules/root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/root-build.iml" filepath="$PROJECT_DIR$/.idea/modules/root-build.iml" />
     </modules>
   </component>
 </project>

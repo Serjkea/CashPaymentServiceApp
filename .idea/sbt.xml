@@ -8,6 +8,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/cash-payment-service-pipeline" />
+            <option value="$PROJECT_DIR$/datamodel" />
+            <option value="$PROJECT_DIR$/file-payments-ingress" />
+            <option value="$PROJECT_DIR$/participant-initialize-ingress" />
+            <option value="$PROJECT_DIR$/payment-checking-streamlet" />
+            <option value="$PROJECT_DIR$/payment-logging-egress" />
+            <option value="$PROJECT_DIR$/payment-processing-streamlet" />
             <option value="$PROJECT_DIR$/project" />
           </set>
         </option>
