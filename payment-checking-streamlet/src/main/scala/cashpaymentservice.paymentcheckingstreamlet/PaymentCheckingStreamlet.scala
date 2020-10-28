@@ -53,7 +53,7 @@ class PaymentCheckingStreamlet extends FlinkStreamlet {
   def buildValidPayment(inputPayment: PaymentData): ValidPayment = {
     val mask   = "\\w+".r
     val fields = mask.findAllIn(inputPayment.payment).toSeq
-    ValidPayment(fields(0), fields(1), fields(2).toInt)
+    ValidPayment("payment", fields(0), fields(1), fields(2).toInt)
   }
 
   def isValid(inputPayment: PaymentData): Boolean = {

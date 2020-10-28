@@ -4,6 +4,9 @@
     "name": "ValidPayment",
     "fields": [
         {
+            "name": "opType", "type": "string"
+        },
+        {
             "name": "from", "type": "string"
         },
         {

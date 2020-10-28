@@ -4,6 +4,9 @@
     "name": "ParticipantData",
     "fields": [
         {
+            "name": "opType", "type": "string"
+        },
+        {
             "name": "nameId", "type": "string"
         },
         {
