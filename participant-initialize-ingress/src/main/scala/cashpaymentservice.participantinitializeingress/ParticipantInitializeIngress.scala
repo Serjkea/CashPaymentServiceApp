@@ -11,7 +11,7 @@ import cloudflow.streamlets.avro._
 class ParticipantInitializeIngress extends AkkaServerStreamlet {
 
   val participantsOut: AvroOutlet[ParticipantData] =
-    AvroOutlet("participants-out").withPartitioner(RoundRobinPartitioner)
+    AvroOutlet[ParticipantData]("participants-out").withPartitioner(RoundRobinPartitioner)
 
   final override def shape(): StreamletShape = StreamletShape.withOutlets(participantsOut)
 

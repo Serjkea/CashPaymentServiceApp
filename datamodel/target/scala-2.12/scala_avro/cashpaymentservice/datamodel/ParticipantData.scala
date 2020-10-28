@@ -3,14 +3,17 @@ package cashpaymentservice.datamodel
 
 import scala.annotation.switch
 
-case class ParticipantData(var nameId: String, var balance: Int) extends org.apache.avro.specific.SpecificRecordBase {
-  def this() = this("", 0)
+case class ParticipantData(var opType: String, var nameId: String, var balance: Int) extends org.apache.avro.specific.SpecificRecordBase {
+  def this() = this("", "", 0)
   def get(field$: Int): AnyRef = {
     (field$: @switch) match {
       case 0 => {
-        nameId
+        opType
       }.asInstanceOf[AnyRef]
       case 1 => {
+        nameId
+      }.asInstanceOf[AnyRef]
+      case 2 => {
         balance
       }.asInstanceOf[AnyRef]
       case _ => new org.apache.avro.AvroRuntimeException("Bad index")
@@ -18,10 +21,13 @@ case class ParticipantData(var nameId: String, var balance: Int) extends org.apa
   }
   def put(field$: Int, value: Any): Unit = {
     (field$: @switch) match {
-      case 0 => this.nameId = {
+      case 0 => this.opType = {
         value.toString
       }.asInstanceOf[String]
-      case 1 => this.balance = {
+      case 1 => this.nameId = {
+        value.toString
+      }.asInstanceOf[String]
+      case 2 => this.balance = {
         value
       }.asInstanceOf[Int]
       case _ => new org.apache.avro.AvroRuntimeException("Bad index")
@@ -32,5 +38,5 @@ case class ParticipantData(var nameId: String, var balance: Int) extends org.apa
 }
 
 object ParticipantData {
-  val SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ParticipantData\",\"namespace\":\"cashpaymentservice.datamodel\",\"fields\":[{\"name\":\"nameId\",\"type\":\"string\"},{\"name\":\"balance\",\"type\":\"int\"}]}")
+  val SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ParticipantData\",\"namespace\":\"cashpaymentservice.datamodel\",\"fields\":[{\"name\":\"opType\",\"type\":\"string\"},{\"name\":\"nameId\",\"type\":\"string\"},{\"name\":\"balance\",\"type\":\"int\"}]}")
 }

@@ -4,7 +4,7 @@ import cashpaymentservice.datamodel.{ ParticipantData, PaymentStatus, ValidPayme
 import cloudflow.flink._
 import cloudflow.streamlets.StreamletShape
 import cloudflow.streamlets.avro.{ AvroInlet, AvroOutlet }
-import org.apache.flink.api.common.state.{ ValueState, ValueStateDescriptor }
+import org.apache.flink.api.common.state.{ MapState, MapStateDescriptor }
 import org.apache.flink.api.scala.createTypeInformation
 import org.apache.flink.streaming.api.functions.co.KeyedCoProcessFunction
 import org.apache.flink.streaming.api.scala.DataStream
@@ -29,7 +29,7 @@ class PaymentProcessingStreamlet extends FlinkStreamlet {
       val outputPaymentStatus: DataStream[PaymentStatus] =
         inputParticipant
           .connect(inputValidPayment)
-          .keyBy(pd => pd.nameId, vp => vp.from)
+          .keyBy(pd => pd.opType, vp => vp.opType)
           .process(new MakingPayment)
 
       writeStream(processStatusOut, outputPaymentStatus)
@@ -39,15 +39,16 @@ class PaymentProcessingStreamlet extends FlinkStreamlet {
 
 class MakingPayment extends KeyedCoProcessFunction[String, ParticipantData, ValidPayment, PaymentStatus] {
 
-  @transient lazy val stateDescriptor               = new ValueStateDescriptor[Int]("balanceState", classOf[Int])
-  @transient lazy val balanceState: ValueState[Int] = getRuntimeContext.getState(stateDescriptor)
+  @transient lazy val stateDescriptor =
+    new MapStateDescriptor[String, Int]("participantsBalance", classOf[String], classOf[Int])
+  @transient lazy val participantsBalance: MapState[String, Int] = getRuntimeContext.getMapState(stateDescriptor)
 
   def processElement1(
     participant: ParticipantData,
     ctx: KeyedCoProcessFunction[String, ParticipantData, ValidPayment, PaymentStatus]#Context,
     out: Collector[PaymentStatus]
   ): Unit = {
-    balanceState.update(participant.balance)
+    participantsBalance.put(participant.nameId, participant.balance)
     out.collect(PaymentStatus("INFO", s"For participant: ${participant.nameId} - balance updated!"))
   }
 
@@ -56,22 +57,25 @@ class MakingPayment extends KeyedCoProcessFunction[String, ParticipantData, Vali
     ctx: KeyedCoProcessFunction[String, ParticipantData, ValidPayment, PaymentStatus]#Context,
     out: Collector[PaymentStatus]
   ): Unit = {
-    out.collect(makePayment(payment, balanceState))
+    out.collect(makePayment(payment, participantsBalance))
   }
 
-  def makePayment(payment: ValidPayment, balance: ValueState[Int]): PaymentStatus = {
-    if (hasParticipant(payment, balance) && isEnoughBalance(payment, balance))
-      updateBalance(payment, balance)
+  def makePayment(payment: ValidPayment, participantsBalance: MapState[String, Int]): PaymentStatus = {
+    if (hasParticipants(payment, participantsBalance) && isEnoughBalance(payment, participantsBalance))
+      updateBalance(payment, participantsBalance)
     else
       PaymentStatus("WARN", s"Transfer is not possible! Check the payment")
   }
 
-  def hasParticipant(payment: ValidPayment, balance: ValueState[Int]): Boolean = balance != null //TODO!!!
+  def hasParticipants(payment: ValidPayment, participantsBalance: MapState[String, Int]): Boolean =
+    participantsBalance.contains(payment.from) && participantsBalance.contains(payment.recipient)
 
-  def isEnoughBalance(payment: ValidPayment, balance: ValueState[Int]): Boolean = balance.value() >= payment.value
+  def isEnoughBalance(payment: ValidPayment, participantsBalance: MapState[String, Int]): Boolean =
+    participantsBalance.get(payment.from) >= payment.value
 
-  def updateBalance(payment: ValidPayment, balance: ValueState[Int]): PaymentStatus = {
-    balance.update(balance.value() - payment.value)
+  def updateBalance(payment: ValidPayment, participantsBalance: MapState[String, Int]): PaymentStatus = {
+    participantsBalance.put(payment.from, participantsBalance.get(payment.from) - payment.value)
+    participantsBalance.put(payment.recipient, participantsBalance.get(payment.recipient) + payment.value)
     PaymentStatus("INFO", s"Payment from ${payment.from} to ${payment.recipient} completed successfully!")
   }
 
