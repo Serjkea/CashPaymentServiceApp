@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="cash-payment-service-pipeline [file:/C:/Development/ScalaLearn/CashPaymentServiceApp/]" external.linked.project.path="$MODULE_DIR$/../../cash-payment-service-pipeline" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="cash-payment-service-pipeline [file:/C:/Users/skostenko/IdeaProjects/CashPaymentServiceApp/]" external.linked.project.path="$MODULE_DIR$/../../cash-payment-service-pipeline" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/../../cash-payment-service-pipeline/target/scala-2.12/classes" />
     <output-test url="file://$MODULE_DIR$/../../cash-payment-service-pipeline/target/scala-2.12/test-classes" />
@@ -66,5 +66,6 @@
     <orderEntry type="library" name="sbt: com.google.errorprone:error_prone_annotations:2.3.4:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.code.gson:gson:2.8.6:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.code.findbugs:jsr305:3.0.2:jar" level="project" />
+    <orderEntry type="library" name="scala-sdk-2.12.12" level="application" />
   </component>
 </module>

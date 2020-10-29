@@ -32,8 +32,7 @@ class FilePaymentsIngress extends AkkaStreamlet {
       val directory = directoryConf.value
 
       Source
-        .tick(1 minute, 5 minutes, NotUsed)
-        //        .single(NotUsed)
+        .tick(1 minute, 3 minutes, NotUsed)
         .flatMapConcat(_ => FileIO.fromPath(Path.of(s"$directory$fileName")))
         .via(Framing.delimiter(ByteString("\n"), Int.MaxValue))
         .map(bs => {
