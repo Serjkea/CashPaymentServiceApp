@@ -5,10 +5,11 @@ lazy val root =
   Project(id = "root", base = file("."))
     .settings(
       name := "root",
-      skip in publish := true
-    )
+      skip in publish := true    )
     .withId("root")
-    .settings(commonSettings)
+    .settings(
+      commonSettings
+    )
     .aggregate(
       cashPaymentServicePipeline,
       dataModel,
@@ -23,7 +24,8 @@ lazy val cashPaymentServicePipeline = appModule("cash-payment-service-pipeline")
   .enablePlugins(CloudflowApplicationPlugin)
   .settings(commonSettings)
   .settings(
-    name := "cashpaymentservice"
+    name := "cashpaymentservice",
+    runLocalConfigFile := Some("cash-payment-service-pipeline/src/main/resources/local.conf")
   )
 
 lazy val dataModel = appModule("datamodel")
@@ -36,12 +38,12 @@ lazy val filePaymentsIngress = appModule("file-payments-ingress")
   .enablePlugins(CloudflowAkkaPlugin)
   .settings(
     commonSettings,
-    runLocalConfigFile := Some("src/main/resources/local.conf"),
+    runLocalConfigFile := Some("file-payments-ingress/src/main/resources/local.conf"),
     libraryDependencies ++= Seq(
       "com.lightbend.akka" %% "akka-stream-alpakka-file" % "1.1.2",
-      "ch.qos.logback"     % "logback-classic"           % "1.2.3",
-      "org.scalatest"      %% "scalatest"                % "3.0.8" % "test",
-      "com.typesafe.akka"  %% "akka-protobuf"            % "2.6.6"
+      "ch.qos.logback" % "logback-classic" % "1.2.3",
+      "org.scalatest" %% "scalatest" % "3.0.8" % "test",
+      "com.typesafe.akka" %% "akka-protobuf" % "2.6.6"
     )
   )
   .dependsOn(dataModel)
@@ -52,9 +54,9 @@ lazy val participantInitializeIngress = appModule("participant-initialize-ingres
     commonSettings,
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-http-spray-json" % "10.1.12",
-      "ch.qos.logback"    % "logback-classic"       % "1.2.3",
-      "org.scalatest"     %% "scalatest"            % "3.0.8" % "test",
-      "com.typesafe.akka" %% "akka-protobuf"        % "2.6.6"
+      "ch.qos.logback" % "logback-classic" % "1.2.3",
+      "org.scalatest" %% "scalatest" % "3.0.8" % "test",
+      "com.typesafe.akka" %% "akka-protobuf" % "2.6.6"
     )
   )
   .dependsOn(dataModel)
@@ -64,9 +66,9 @@ lazy val paymentCheckingStreamlet = appModule("payment-checking-streamlet")
   .settings(
     commonSettings,
     libraryDependencies ++= Seq(
-      "ch.qos.logback"    % "logback-classic" % "1.2.3",
-      "org.scalatest"     %% "scalatest"      % "3.0.8" % "test",
-      "com.typesafe.akka" %% "akka-protobuf"  % "2.6.6"
+      "ch.qos.logback" % "logback-classic" % "1.2.3",
+      "org.scalatest" %% "scalatest" % "3.0.8" % "test",
+      "com.typesafe.akka" %% "akka-protobuf" % "2.6.6"
     )
   )
   .settings(
@@ -79,9 +81,9 @@ lazy val paymentProcessingStreamlet = appModule("payment-processing-streamlet")
   .settings(
     commonSettings,
     libraryDependencies ++= Seq(
-      "ch.qos.logback"    % "logback-classic" % "1.2.3",
-      "org.scalatest"     %% "scalatest"      % "3.0.8" % "test",
-      "com.typesafe.akka" %% "akka-protobuf"  % "2.6.6"
+      "ch.qos.logback" % "logback-classic" % "1.2.3",
+      "org.scalatest" %% "scalatest" % "3.0.8" % "test",
+      "com.typesafe.akka" %% "akka-protobuf" % "2.6.6"
     )
   )
   .settings(
@@ -94,9 +96,9 @@ lazy val paymentLoggingEgress = appModule("payment-logging-egress")
   .settings(
     commonSettings,
     libraryDependencies ++= Seq(
-      "ch.qos.logback"    % "logback-classic" % "1.2.3",
-      "org.scalatest"     %% "scalatest"      % "3.0.8" % "test",
-      "com.typesafe.akka" %% "akka-protobuf"  % "2.6.6"
+      "ch.qos.logback" % "logback-classic" % "1.2.3",
+      "org.scalatest" %% "scalatest" % "3.0.8" % "test",
+      "com.typesafe.akka" %% "akka-protobuf" % "2.6.6"
     )
   )
   .settings(
@@ -128,6 +130,6 @@ lazy val commonSettings = Seq(
     "-language:_",
     "-unchecked"
   ),
-  scalacOptions in (Compile, console) --= Seq("-Ywarn-unused", "-Ywarn-unused-import"),
-  scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value
+  scalacOptions in(Compile, console) --= Seq("-Ywarn-unused", "-Ywarn-unused-import"),
+  scalacOptions in(Test, console) := (scalacOptions in(Compile, console)).value
 )

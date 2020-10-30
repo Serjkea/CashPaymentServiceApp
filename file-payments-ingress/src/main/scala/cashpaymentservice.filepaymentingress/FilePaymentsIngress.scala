@@ -19,7 +19,7 @@ class FilePaymentsIngress extends AkkaStreamlet {
 
   override def shape(): StreamletShape = StreamletShape.withOutlets(paymentsOut)
 
-  val fileNameConf  = StringConfigParameter("filename", "payments filename", Some("payments.dat"))
+  val fileNameConf  = StringConfigParameter("filename", "payments filename", Some("payments1.dat"))
   val directoryConf = StringConfigParameter("directory", "payments directory", Some("./test-data/"))
 
   override def configParameters: Vector[StringConfigParameter] = Vector(fileNameConf, directoryConf)
