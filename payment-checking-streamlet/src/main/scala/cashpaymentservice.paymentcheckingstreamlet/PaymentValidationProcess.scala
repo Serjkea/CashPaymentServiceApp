@@ -1,6 +1,6 @@
 package cashpaymentservice.paymentcheckingstreamlet
 
-import cashpaymentservice.datamodel.{PaymentData, PaymentStatus, ValidPayment}
+import cashpaymentservice.datamodel.{MessageType, PaymentData, PaymentStatus, ValidPayment}
 import org.apache.flink.streaming.api.functions.ProcessFunction
 import org.apache.flink.streaming.api.scala.OutputTag
 import org.apache.flink.util.Collector
@@ -15,7 +15,7 @@ class PaymentValidationProcess(outputTag: OutputTag[PaymentStatus])
     if (isValid(paymentData)) {
       out.collect(buildValidPayment(paymentData))
     } else {
-      ctx.output(outputTag, PaymentStatus("WARN", s"Payment: ${paymentData.payment} - doesn't match the mask!"))
+      ctx.output(outputTag, PaymentStatus(MessageType.WARN, s"Payment: ${paymentData.payment} - doesn't match the mask!"))
     }
   }
 

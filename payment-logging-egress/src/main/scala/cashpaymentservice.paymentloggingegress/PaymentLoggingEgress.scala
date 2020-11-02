@@ -1,11 +1,11 @@
 package cashpaymentservice.paymentloggingegress
 
 import akka.event.LoggingAdapter
-import akka.stream.scaladsl.{ RunnableGraph, Sink }
-import cashpaymentservice.datamodel.PaymentStatus
+import akka.stream.scaladsl.{RunnableGraph, Sink}
+import cashpaymentservice.datamodel.{MessageType, PaymentStatus}
 import cloudflow.akkastream.scaladsl.RunnableGraphStreamletLogic
 import cloudflow.akkastream.util.scaladsl.Merger
-import cloudflow.akkastream.{ AkkaStreamlet, AkkaStreamletLogic }
+import cloudflow.akkastream.{AkkaStreamlet, AkkaStreamletLogic}
 import cloudflow.streamlets.StreamletShape
 import cloudflow.streamlets.avro.AvroInlet
 
@@ -26,8 +26,8 @@ class PaymentLoggingEgress extends AkkaStreamlet {
         .source(checkStatusIn, processStatusIn)
         .map(s =>
           s.infoType match {
-            case "WARN" => log.warning(s.message)
-            case "INFO" => log.info(s.message)
+            case MessageType.WARN => log.warning(s.message)
+            case MessageType.INFO => log.info(s.message)
           }
         )
         .to(Sink.ignore)

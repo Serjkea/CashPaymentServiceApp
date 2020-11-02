@@ -19,8 +19,8 @@ class FilePaymentsIngress extends AkkaStreamlet {
 
   override def shape(): StreamletShape = StreamletShape.withOutlets(paymentsOut)
 
-  val fileNameConf  = StringConfigParameter("filename", "payments filename", Some("payments1.dat"))
-  val directoryConf = StringConfigParameter("directory", "payments directory", Some("./test-data/"))
+  private val fileNameConf  = StringConfigParameter("filename", "payments filename", Some("payments1.dat"))
+  private val directoryConf = StringConfigParameter("directory", "payments directory", Some("./test-data/"))
 
   override def configParameters: Vector[StringConfigParameter] = Vector(fileNameConf, directoryConf)
 
@@ -32,7 +32,7 @@ class FilePaymentsIngress extends AkkaStreamlet {
       val directory = directoryConf.value
 
       Source
-        .tick(1 minute, 3 minutes, NotUsed)
+        .tick(1.minute, 3.minutes, NotUsed)
         .flatMapConcat(_ => FileIO.fromPath(Path.of(s"$directory$fileName")))
         .via(Framing.delimiter(ByteString("\n"), Int.MaxValue))
         .map(bs => {

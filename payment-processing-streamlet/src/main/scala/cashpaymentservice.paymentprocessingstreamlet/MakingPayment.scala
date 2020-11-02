@@ -1,6 +1,6 @@
 package cashpaymentservice.paymentprocessingstreamlet
 
-import cashpaymentservice.datamodel.{ParticipantData, PaymentStatus, ValidPayment}
+import cashpaymentservice.datamodel.{MessageType, ParticipantData, PaymentStatus, ValidPayment}
 import org.apache.flink.api.common.state.{MapState, MapStateDescriptor}
 import org.apache.flink.streaming.api.functions.co.KeyedCoProcessFunction
 import org.apache.flink.util.Collector
@@ -17,7 +17,7 @@ class MakingPayment extends KeyedCoProcessFunction[String, ParticipantData, Vali
                        out: Collector[PaymentStatus]
                      ): Unit = {
     participantsBalance.put(participant.nameId, participant.balance)
-    out.collect(PaymentStatus("INFO", s"For participant: ${participant.nameId} - balance updated!"))
+    out.collect(PaymentStatus(MessageType.INFO, s"For participant: ${participant.nameId} - balance updated!"))
   }
 
   def processElement2(
@@ -32,7 +32,7 @@ class MakingPayment extends KeyedCoProcessFunction[String, ParticipantData, Vali
     if (hasParticipants(payment, participantsBalance) && isEnoughBalance(payment, participantsBalance))
       updateBalance(payment, participantsBalance)
     else
-      PaymentStatus("WARN", s"Transfer is not possible! Check the payment")
+      PaymentStatus(MessageType.WARN, s"Transfer is not possible! Check the payment")
   }
 
   def hasParticipants(payment: ValidPayment, participantsBalance: MapState[String, Int]): Boolean =
@@ -44,7 +44,7 @@ class MakingPayment extends KeyedCoProcessFunction[String, ParticipantData, Vali
   def updateBalance(payment: ValidPayment, participantsBalance: MapState[String, Int]): PaymentStatus = {
     participantsBalance.put(payment.from, participantsBalance.get(payment.from) - payment.value)
     participantsBalance.put(payment.recipient, participantsBalance.get(payment.recipient) + payment.value)
-    PaymentStatus("INFO", s"Payment from ${payment.from} to ${payment.recipient} completed successfully!")
+    PaymentStatus(MessageType.INFO, s"Payment from ${payment.from} to ${payment.recipient} completed successfully!")
   }
 
 }

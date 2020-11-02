@@ -4,7 +4,8 @@
     "name": "PaymentStatus",
     "fields": [
         {
-            "name": "infoType", "type": "string"
+            "name": "infoType", "type": {"type": "enum", "name": "MessageType",
+                                                      "symbols": ["INFO", "WARN"]}
         },
         {
             "name": "message", "type": "string"
